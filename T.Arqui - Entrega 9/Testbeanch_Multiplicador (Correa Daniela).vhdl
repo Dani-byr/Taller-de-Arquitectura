@@ -10,7 +10,7 @@ architecture Behavioral of test_Multipler is
 		port(A, B: in Bit_Vector(3 downto 0); CLK, STB: in Bit; Result: out Bit_Vector(7 downto 0); Done: out Bit);
 	end component; 
 			
-	--Declaracion de señales
+	--Declaracion de seÃ±ales
     signal A, B: Bit_Vector(3 downto 0); 
 	signal Result: Bit_Vector(7 downto 0);
 	signal STB, Done, CLK: Bit;
@@ -21,7 +21,7 @@ begin
 	--Instanciacion del componente a testear 
 	U1: Multiplier port map(A, B, CLK, STB, Result, Done);
 	
-	--Driver de las señales de test
+	--Driver de las seÃ±ales de test
 	Clock(CLK, 8.62 ns, 8.62 ns);
 	
 	Stimulus: process		
