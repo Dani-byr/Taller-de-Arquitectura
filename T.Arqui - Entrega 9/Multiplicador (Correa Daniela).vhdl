@@ -34,7 +34,7 @@ architecture structural of Multiplier is
 	end component;
 	
 	
-	-- Declaro las señales                            
+	-- Declaro las seÃ±ales                            
 	signal Stop, Init, Shift, Add, Cout: Bit;
 	signal NotCLK : Bit;
 	signal Estable: Bit;
@@ -42,18 +42,18 @@ architecture structural of Multiplier is
 	signal Q_A, Q_B, Q_ACC: Bit_Vector(7 downto 0); 
 	signal SumP, Res: Bit_Vector(7 downto 0);
 
-    -- Señales:
+    -- SeÃ±ales:
 	-- - Q_A: salida del shifter A y entrada del nor
 	-- - Q_B: salida del shifter B  y una de las entradas al Adder8
 	-- - SumP: Salida del Adder8 y entrada al registro ACC
 	-- - Q_ACC: salida del registro ACC y entrada al registro resultado 
-	-- - Estable: señal que indica cuando los FF se estabilizan
+	-- - Estable: seÃ±al que indica cuando los FF se estabilizan
 	
 	
     -- - Stop: Entrada de la FSM, resultado de la compuerta nor
-    -- - Init: salida de la FSM y señal de entrada LOAD para los shifter A y B, y de Clr para el registro ACC  
-	-- - Shift: salida de la FSM y señal de entrada SH para los shifter A y B
-	-- - Add: salida de la FSM y señal de entrada Pre para el registro ACC 
+    -- - Init: salida de la FSM y seÃ±al de entrada LOAD para los shifter A y B, y de Clr para el registro ACC  
+	-- - Shift: salida de la FSM y seÃ±al de entrada SH para los shifter A y B
+	-- - Add: salida de la FSM y seÃ±al de entrada Pre para el registro ACC 
 
 														
 begin
