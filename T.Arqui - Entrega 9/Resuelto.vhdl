@@ -6,21 +6,21 @@
 
 --El multiplicador va a estar basado en sumas y corrimientos de bits. El registro B guarda el numero que es sumado, A guarda la cantidad de veces que B es sumado y el
 --registro ACC guarda resultados intermedios (se usa para ir cargando el registro B).
---El FSM Controller sera el que controla la suma, mandando se‘¯Oales a los registros A y B dependiendo del estado en el que este. Los registro A,B y ACC son instancias
+--El FSM Controller sera el que controla la suma, mandando se√î√∏Oales a los registros A y B dependiendo del estado en el que este. Los registro A,B y ACC son instancias
 --del componente Shift_N (Practica 6), que es un Shifter Register basado en biestables D. El Adder es una instancia del componente Adder_8 (Practica 5).
 --El NOR tiene que ser creado aparte, como un componente nuevo.
---Probablemente se necesite crear otro registro, ‘¯Opara guardar Result una vez que se activa Done=1?	 
---Toda la simulacion probablemente comience con la activacion de la se‘¯Oal STB, que es externa, y probablemente tengas que controlar sus cambios.
+--Probablemente se necesite crear otro registro, √î√∏Opara guardar Result una vez que se activa Done=1?	 
+--Toda la simulacion probablemente comience con la activacion de la se√î√∏Oal STB, que es externa, y probablemente tengas que controlar sus cambios.
 --En tu caso: A=9, B=2 y f_CLK=29MHz.
 
---RECORDAR: Hay cambios de estado en la FSM que ocurren sin condicion. El INIT (de FSM), CLR (de ACC) y LD (de A y B) comparten se‘¯Oal. Los SHIFT (de A, B y FSM) comparten
---se‘¯Oal. El ADD (de FSM) y el LD (de ACC) comparten se‘¯Oal. El LSB (de FSM) se saca del lsb del registro A. La practica 8 define algunas funciones para el CLK, revisarlas
---para saber como usarlas. Las flechas que salen de un estado a la nada en el Diagrama de Estados de la FSM son las se‘¯Oales que controlan directamente al multiplicador.
+--RECORDAR: Hay cambios de estado en la FSM que ocurren sin condicion. El INIT (de FSM), CLR (de ACC) y LD (de A y B) comparten se√î√∏Oal. Los SHIFT (de A, B y FSM) comparten
+--se√î√∏Oal. El ADD (de FSM) y el LD (de ACC) comparten se√î√∏Oal. El LSB (de FSM) se saca del lsb del registro A. La practica 8 define algunas funciones para el CLK, revisarlas
+--para saber como usarlas. Las flechas que salen de un estado a la nada en el Diagrama de Estados de la FSM son las se√î√∏Oales que controlan directamente al multiplicador.
 --La simulacion termina a los 460 ns.
 
 entity Multiplier is 
 	port (A, B: in Bit_Vector(3 downto 0); CLK, STB: in Bit; Result: out Bit_Vector(7 downto 0); Done: out Bit);
-	--Declaracion de constantes, variables, se‘¯Oales, etc. que son objetos asociados a todas las arquitecturas
+	--Declaracion de constantes, variables, se√î√∏Oales, etc. que son objetos asociados a todas las arquitecturas
 	--BEGIN
 		--Sentencias que no afectan la funcionalidad del dispositivo, solo son especificaciones. EJ: configuraciones prohibidas
 	--END		
@@ -55,7 +55,7 @@ architecture structural of Multiplier is
 	end component;
 	
 	
-	-- Declaro las seÒales                            
+	-- Declaro las se√±ales                            
 	signal Stop, Init, Shift, Add, Cout: Bit;
 	signal NotCLK : Bit;	   --NotInit
 	signal Estable: Bit;
@@ -63,7 +63,7 @@ architecture structural of Multiplier is
 	signal Q_A, Q_B, Q_ACC: Bit_Vector(7 downto 0); 
 	signal SumP, Res: Bit_Vector(7 downto 0);
 
-    -- SeÒales:
+    -- Se√±ales:
 	-- - Q_A: salida del shifter A y entrada del nor
 	-- - Q_B: salida del shifter B  y una de las entradas al Adder8
 	-- - SumP: Salida del Adder8 y entrada al registro ACC
@@ -71,9 +71,9 @@ architecture structural of Multiplier is
 	
 	
     -- - Stop: Entrada de la FSM, resultado de la compuerta nor
-    -- - Init: salida de la FSM y seÒal de entrada LOAD para los shifter A y B, y de Clr para el registro ACC  
-	-- - Shift: salida de la FSM y seÒal de entrada SH para los shifter A y B
-	-- - Add: salida de la FSM y seÒal de entrada Pre para el registro ACC 
+    -- - Init: salida de la FSM y se√±al de entrada LOAD para los shifter A y B, y de Clr para el registro ACC  
+	-- - Shift: salida de la FSM y se√±al de entrada SH para los shifter A y B
+	-- - Add: salida de la FSM y se√±al de entrada Pre para el registro ACC 
 
 														
 begin
@@ -108,7 +108,7 @@ architecture Behavioral of test_Multipler is
 		port(A, B: in Bit_Vector(3 downto 0); CLK, STB: in Bit; Result: out Bit_Vector(7 downto 0); Done: out Bit);
 	end component; 
 			
-	--Declaracion de seÒales
+	--Declaracion de se√±ales
     signal A, B: Bit_Vector(3 downto 0); 
 	signal Result: Bit_Vector(7 downto 0);
 	signal STB, Done, CLK: Bit;
@@ -119,7 +119,7 @@ begin
 	--Instanciacion del componente a testear 
 	U1: Multiplier port map(A, B, CLK, STB, Result, Done);
 	
-	--Driver de las seÒales de test
+	--Driver de las se√±ales de test
 	Clock(CLK, 8.62 ns, 8.62 ns);
 	
 	Stimulus: process	
